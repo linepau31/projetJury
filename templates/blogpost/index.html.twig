@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Blog - H2o Fabrik Cocktail {% endblock %}
+
+{% block content %}
+
+    <div class="text-center text-dark p-3">
+        <h1 class="display-4 fw-bolder">Blog</h1>
+        <img class="card-img-top" src="{{ asset('assets/img/cocktails-of-the-deep-south-1323527.jpg') }}" alt="..." />
+    </div>
+
+    {% for blogpost in blogposts %}
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="/uploads/{{ blogpost.illustration }}" class="card-img-top" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ blogpost.title }}</h5>
+                    <p class="card-text"><small class="text-muted">{{ blogpost.createdAt|date('d/m/Y') }}</small></p>
+                    <a href="{{ path('index_single', {'slug': blogpost.slug}) }}" class="card-link">Lire</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+   {% endfor%}
+
+    <div class="d-flex justify-content-center">
+        {% do blogposts.setPageRange(2) %}
+        {{ knp_pagination_render(blogposts, 'bundles/TwigBundle/Pagination/pagination.html.twig') }}
+    </div>
+
+{% endblock %}

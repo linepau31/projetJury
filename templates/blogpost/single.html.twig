@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Blog - H2o Fabrik Cocktail {% endblock %}
+
+{% block content %}
+
+    <article class="blog-post px-3 py-5 p-md-5">
+        <div class="container single-col-max-width">
+            <header class="blog-post-header">
+                <h2 class="title mb-2">{{ blogpost.title }}</h2>
+                <div class="meta mb-3">
+                    <time class="fa-sm text-muted" datetime="2021-10-22">
+                        Publié le {{ blogpost.createdAt|date('d/m/Y') }}
+                    </time>
+                </div>
+            </header>
+
+            <div class="blog-post-body">
+                   <img class="img-fluid" src="/uploads/{{ blogpost.illustration }}" alt="image">
+                <p>{{ blogpost.content}} </p>
+            </div>
+        </div>
+    </article>
+
+    {% include "commentary/index.html.twig" %}
+    {% include "commentary/Commentaires.html.twig" %}
+
+
+{% endblock %}

@@ -1,19 +1,101 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="La Boutique qui vend des articles pour fabriquer des cocktails">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>{% block title %} H2o Fabrik Cocktail{% endblock %}</title>
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/css/h2oFabrikCocktail.css') }}">
+    {% block javascript %}
+    {% endblock %}
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand pr-5" href="{{  path('home') }}">H2o Fabrik Cocktail</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="{{ asset('assets/img/bouteilles-de-vin.png') }} " alt="icons 3 bouteilles" class="cart-icon">
+                        Produits
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{{ path('products') }}">Nos Produits</a></li>
+                        <li><a class="dropdown-item" href="#">Mon Bar</a></li>
+                        <li><a class="dropdown-item" href="#">Liste de courses</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{  path('blogposts') }}">Blog</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ path('contact') }}">Contact</a>
+                </li>
+
+            </ul>
+            <div class="navbar-item-custom">
+                {% if app.user %}
+                    <a href="{{ path('account') }}">Mon compte <small>*{{ app.user.firstname }}*</small></a> | <a href="{{ path('app_logout') }}">Déconnexion</a>
+                {% else %}
+                    <a href="{{ path('app_login')  }}">Connexion</a> | <a href="{{ path('register') }}">Inscription</a>
+                {% endif %}
+            </div>
+            <a href="{{ path('cart') }}">
+                <img src="{{ asset('assets/img/panier.png') }}" alt="Mon panier" class="cart-icon">
+            </a>
+        </div>
+    </nav>
+</header>
+<main role="main">
+
+        {% if block('img') is defined %}
+            <img src="{{ asset('assets/img/martini-1117932_1920.jpg') }}" class="img-fluid position-relative" alt="3 verres de cocktails différents">
+        {% endif %}
+
+    <div class="container marketing {% if block('img') is not defined %} mt-5 {% endif %}">
+
+        {% block content %}
         {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    </div><!-- /.container -->
+
+<!-- FOOTER -->
+<footer class="footer-custom bg-dark">
+    <p class="text-white">
+        &copy; 2021-2022 H2o Fabrik Cocktail <br>
+        <small> Pauline Marot <br>
+            <a href="#">Privacy</a> &middot; <a href="#">Terms</a></small>
+    </p>
+</footer>
+</main>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+</body>
+{% block script %}
+{% endblock %}
 </html>
