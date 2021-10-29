@@ -1,12 +1,12 @@
 <?php
-namespace App\Classe;
 
+namespace App\Classe;
 
 use App\Entity\Product;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-class Cart
+class MyBar
 {
     private SessionInterface $session;
     private EntityManagerInterface $entityManager;
@@ -19,53 +19,36 @@ class Cart
 
     public function add($id)
     {
-        $cart = $this->session->get('cart', []);
+        $myBar = $this->session->get('my_bar', []);
 
-        if (!empty($cart[$id])) {
-            $cart[$id]++;  /* ajoute 1 produit */
+        if (!empty($myBar[$id])) {
+            $myBar[$id]++;
         }
         else{
-            $cart[$id] = 1;  /* enlève */
+            $myBar[$id] = 1;
         }
-        $this->session->set('cart', $cart);
+        $this->session->set('my_bar', $myBar);
     }
 
     public function get()
     {
-        return $this->session->get('cart');
+        return $this->session->get('my_bar');
     }
 
-    public function remove()
-    {
-        return $this->session->remove('cart');
-    }
 
     public function delete($id)
     {
-        $cart = $this->session->get('cart', []);
+        $myBar = $this->session->get('my_bar', []);
 
-        unset($cart[$id]);
+        unset($myBar[$id]);
 
-        return $this->session->set('cart', $cart);
-    }
-
-    public function decrease($id)
-    {
-        $cart = $this->session->get('cart', []);
-
-        if ($cart[$id] > 1) {
-            $cart[$id]--;
-        }
-        else {
-            unset($cart[$id]);
-        }
-        return $this->session->set('cart', $cart);
+        return $this->session->set('my_bar', $myBar);
     }
 
     public function getFull(): array
     {
 
-        $cartComplete = [];
+        $myBarComplete = [];
 
         if ($this->get()) {
             foreach ($this->get() as $id => $quantity){
@@ -76,13 +59,13 @@ class Cart
                     continue;
                 }
 
-                $cartComplete[] = [
+                $myBarComplete[] = [
                     'product' => $product_object,
                     'quantity' => $quantity
                 ];
             }
         }
-        return $cartComplete;
+        return $myBarComplete;
     }
 
 }

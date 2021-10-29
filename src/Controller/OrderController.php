@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class OrderController extends AbstractController
 {
-    private EntityManagerInterface $entityManager;
+    private $entityManager;
 
     public function __construct(EntityManagerInterface $entityManager)
     {

@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Bar - H2o Fabrik Cocktail{% endblock %}
+
+{% block content %}
+
+        <h1>Mon Bar</h1>
+        <p>
+            Retrouver l'ensemble des produits que vous avez déjà chez vous pour fabriquer des cocktails.<br>
+            <a href="{{  path('home') }}">Retour à l'accueil</a>
+        </p>
+    {% if my_bar|length %}
+
+
+        <table class="table table-hover mt-3">
+            <thead>
+            <tr>
+                <th scope="col">Produit</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for product in my_bar %}
+            <tr>
+                <th>
+                    <a href="">
+                    <img src="/uploads/{{ product.product.illustration }}" alt="{{ product.product.name }}" height="75px"><br>
+                    </a>
+                </th>
+                <td>
+                    {{ product.product.name }}<br>
+                    <small>{{ product.product.subtitle }}</small>
+                </td>
+        <td>
+            <a href="{{ path('delete_my_bar', { 'id' : product.product.id}) }}">
+                <img src="{{ asset('assets/img/poubelle-de-recyclage.png') }}" alt="Supprimer mon produit" height="22px"> <br>
+            </a>
+        </td>
+                {% endfor %}
+        </tbody>
+    </table>
+
+    {% else %}
+        <hr>
+        <p>Votre Bar est vide !</p>
+    {% endif %}
+
+{% endblock %}

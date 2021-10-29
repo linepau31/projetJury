@@ -21,7 +21,7 @@ class OrderDetails
      * @ORM\ManyToOne(targetEntity=Order::class, inversedBy="orderDetails")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $myorder;
+    private $myOrder;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -53,14 +53,14 @@ class OrderDetails
         return $this->id;
     }
 
-    public function getMyorder(): ?Order
+    public function getMyOrder(): ?Order
     {
-        return $this->myorder;
+        return $this->myOrder;
     }
 
-    public function setMyorder(?Order $myorder): self
+    public function setMyOrder(?Order $myOrder): self
     {
-        $this->myorder = $myorder;
+        $this->myOrder = $myOrder;
 
         return $this;
     }

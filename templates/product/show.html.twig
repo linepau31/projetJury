@@ -4,7 +4,7 @@
 
 {% block content %}
 
-    <div class="row">
+    <div class="row mt-5">
         <div class="col-md-5">
             <img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="img-fluid">
         </div>
@@ -17,8 +17,16 @@
                 {{ product.description }}
 
             </p>
-            <a href="{{ path('add_to_cart', { 'id' : product.id }) }}" class="btn btn-dark">Ajouter au panier</a>
-
+            <div class="btn-group" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Ajouter
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <li><a class="dropdown-item" href="{{ path('add_to_cart', { 'id' : product.id }) }}">Panier</a></li>
+                    <li><a class="dropdown-item" href="{{ path('add_my_bar', { 'id' : product.id }) }}">Mon Bar</a></li>
+                    <li><a class="dropdown-item" href="{{ path('add_shopping_list', { 'id' : product.id }) }}">Liste de courses</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 

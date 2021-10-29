@@ -28,11 +28,11 @@ class CommentaryCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             AssociationField::new('blogpost'),
-            TextField::new('Author')->hideOnForm(),
+            TextField::new('Author', 'Auteur')->hideOnForm(),
             EmailField::new('email')->onlyOnForms(),
-            TextareaField::new('content'),
-            DateField::new('createdAt'),
-            BooleanField::new('isPublished'),
+            TextareaField::new('content', 'Contenu'),
+            DateField::new('createdAt', 'Date'),
+            BooleanField::new('isPublished', 'Publié'),
         ];
     }
 

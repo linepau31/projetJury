@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Classe\Search;
 use App\Entity\Product;
 use App\Form\SearchType;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ProductController extends AbstractController
 {
-    private EntityManager $entityManager;
+    private  $entityManager;
 
     public function __construct(EntityManagerInterface $entityManager)
     {

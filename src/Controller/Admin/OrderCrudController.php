@@ -102,7 +102,7 @@ class OrderCrudController extends AbstractCrudController
             MoneyField::new('total ','Total produit')->setCurrency('EUR'),
             TextField::new('carrierName', 'Transporteur'),
             MoneyField::new('carrierPrice', 'Frais de port')->setCurrency('EUR'),
-            ChoiceField::new('state')->setChoices([
+            ChoiceField::new('state','Payée')->setChoices([
                 'Non payée' => 0,
                 'Payée' => 1,
                 'Préparation en cours' => 2,
@@ -110,6 +110,7 @@ class OrderCrudController extends AbstractCrudController
             ]),
             ArrayField::new('orderDetails', 'Produits achetés')->hideOnIndex()
         ];
+
     }
 
 }

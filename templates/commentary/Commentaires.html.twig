@@ -4,8 +4,6 @@
 
 {% block content %}
 
-
-<article>
         {% for commentary in commentaires %}
         <div class="container mb-2">
             <div class="row justify-content-center">
@@ -14,9 +12,9 @@
                         <div class="card-body">
                             <blockquote class="mb-0 text-center">
                                 <p>{{ commentary.content }}</p>
-                                <footer class="blockquote-footer">
+                                <div class="blockquote-footer">
                                     <span class="h6 text-uppercase">Par {{ commentary.author }} le {{ commentary.createdAt|date('d/m/Y') }}</span>
-                                </footer>
+                                </div>
                             </blockquote>
                         </div>
                     </div>
@@ -24,9 +22,5 @@
             </div>
         </div>
         {% endfor%}
-    </article>
-
-
-
-
 {% endblock %}
+

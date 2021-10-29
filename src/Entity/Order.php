@@ -72,10 +72,9 @@ class Order
     }
 
     /**
-     * @ORM\OneToMany(targetEntity=OrderDetails::class, mappedBy="myorder")
+     * @ORM\OneToMany(targetEntity=OrderDetails::class, mappedBy="myOrder")
      */
     private $orderDetails;
-
 
     public function __construct()
     {
@@ -212,5 +211,6 @@ class Order
 
         return $this;
     }
+
 
 }

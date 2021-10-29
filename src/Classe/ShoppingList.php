@@ -1,13 +1,14 @@
 <?php
-namespace App\Classe;
 
+namespace App\Classe;
 
 use App\Entity\Product;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-class Cart
+class ShoppingList
 {
+
     private SessionInterface $session;
     private EntityManagerInterface $entityManager;
 
@@ -19,53 +20,48 @@ class Cart
 
     public function add($id)
     {
-        $cart = $this->session->get('cart', []);
+        $shoppingList = $this->session->get('shopping_list', []);
 
-        if (!empty($cart[$id])) {
-            $cart[$id]++;  /* ajoute 1 produit */
+        if (!empty($shoppingList[$id])) {
+            $shoppingList[$id]++;
         }
         else{
-            $cart[$id] = 1;  /* enlève */
+            $shoppingList[$id] = 1;
         }
-        $this->session->set('cart', $cart);
+        $this->session->set('shopping_list', $shoppingList);
     }
 
     public function get()
     {
-        return $this->session->get('cart');
+        return $this->session->get('shopping_list');
     }
 
-    public function remove()
-    {
-        return $this->session->remove('cart');
-    }
 
     public function delete($id)
     {
-        $cart = $this->session->get('cart', []);
+        $shoppingList = $this->session->get('shopping_list', []);
 
-        unset($cart[$id]);
+        unset($shoppingList[$id]);
 
-        return $this->session->set('cart', $cart);
+        return $this->session->set('shopping_list', $shoppingList);
     }
 
-    public function decrease($id)
+    public function decrease($id)   /* vérifie la quantité du produit = 1*/
     {
-        $cart = $this->session->get('cart', []);
+        $shoppingList = $this->session->get('shopping_list', []);
 
-        if ($cart[$id] > 1) {
-            $cart[$id]--;
+        if ($shoppingList[$id] > 1) {    /* retirer (-1) */
+            $shoppingList[$id]--;
+        } else {  /* supprimer le produit */
+            unset($shoppingList[$id]);
         }
-        else {
-            unset($cart[$id]);
-        }
-        return $this->session->set('cart', $cart);
+        return $this->session->set('shopping_list', $shoppingList);
     }
 
     public function getFull(): array
     {
 
-        $cartComplete = [];
+        $shoppingListComplete = [];
 
         if ($this->get()) {
             foreach ($this->get() as $id => $quantity){
@@ -76,13 +72,12 @@ class Cart
                     continue;
                 }
 
-                $cartComplete[] = [
+                $shoppingListComplete[] = [
                     'product' => $product_object,
                     'quantity' => $quantity
                 ];
             }
         }
-        return $cartComplete;
+        return $shoppingListComplete;
     }
-
 }

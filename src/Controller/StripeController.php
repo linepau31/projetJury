@@ -15,14 +15,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class StripeController extends AbstractController
 {
-    /**
-     * @throws \Stripe\Exception\ApiErrorException
-     */
     #[Route('/commande/create-session/{reference}', name: 'stripe_create_session')]
     public function index(EntityManagerInterface $entityManager,Cart $cart, $reference): Response
     {
         $products_for_stripe = [];
-        $YOUR_DOMAIN = 'https://127.0.0.1:8001'; // Attention à l'adresse https
+        $YOUR_DOMAIN = 'https://127.0.0.1:8000';
 
         $order = $entityManager->getRepository(Order::class)->findOneByReference($reference);
 
@@ -58,7 +55,7 @@ class StripeController extends AbstractController
             'quantity' => 1,
         ];
 
-        Stripe::setApiKey('sk_test_51JcOHRDb7YV31XZMdFbDtAql7om3UIUoaHUrEjeYPcKc1d81U9PsYOltrrB8bAUBWTClA6H8JnFLGJmRG1ezF6Bm0017zOkp2R');
+        Stripe::setApiKey('sk_test_51JpRgRBVHTDyqGpCXeFDuMTz3sMsjV5BvfSvQ8yr7DRXM7GlT0IiDYBnCiqoz0UTPQkp1E81U24ASnQDcOeLXxuZ00IUY1mfVp');
 
         $checkout_session = Session::create([
             'customer_email' => $this->getUser()->getEmail(),
@@ -78,4 +75,6 @@ class StripeController extends AbstractController
         return $response;
     }
 }
+
+
 

@@ -58,10 +58,28 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $addresses;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Blogpost::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $blogposts;
+
+    /**
+     * @ORM\OneToMany(targetEntity=MyBar::class, mappedBy="user")
+     */
+    private $myBars;
+
+    /**
+     * @ORM\OneToMany(targetEntity=ShoppingList::class, mappedBy="user")
+     */
+    private $shoppingLists;
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
         $this->addresses = new ArrayCollection();
+        $this->blogposts = new ArrayCollection();
+        $this->myBars = new ArrayCollection();
+        $this->shoppingLists = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -241,4 +259,95 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    /**
+     * @return Collection|Blogpost[]
+     */
+    public function getBlogposts(): Collection
+    {
+        return $this->blogposts;
+    }
+
+    public function addBlogpost(Blogpost $blogpost): self
+    {
+        if (!$this->blogposts->contains($blogpost)) {
+            $this->blogposts[] = $blogpost;
+            $blogpost->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBlogpost(Blogpost $blogpost): self
+    {
+        if ($this->blogposts->removeElement($blogpost)) {
+            // set the owning side to null (unless already changed)
+            if ($blogpost->getUser() === $this) {
+                $blogpost->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|MyBar[]
+     */
+    public function getMyBars(): Collection
+    {
+        return $this->myBars;
+    }
+
+    public function addMyBar(MyBar $myBar): self
+    {
+        if (!$this->myBars->contains($myBar)) {
+            $this->myBars[] = $myBar;
+            $myBar->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMyBar(MyBar $myBar): self
+    {
+        if ($this->myBars->removeElement($myBar)) {
+            // set the owning side to null (unless already changed)
+            if ($myBar->getUser() === $this) {
+                $myBar->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ShoppingList[]
+     */
+    public function getShoppingLists(): Collection
+    {
+        return $this->shoppingLists;
+    }
+
+    public function addShoppingList(ShoppingList $shoppingList): self
+    {
+        if (!$this->shoppingLists->contains($shoppingList)) {
+            $this->shoppingLists[] = $shoppingList;
+            $shoppingList->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeShoppingList(ShoppingList $shoppingList): self
+    {
+        if ($this->shoppingLists->removeElement($shoppingList)) {
+            // set the owning side to null (unless already changed)
+            if ($shoppingList->getUser() === $this) {
+                $shoppingList->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
 }
