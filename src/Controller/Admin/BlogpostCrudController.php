@@ -24,15 +24,15 @@ class BlogpostCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('title'),
+            TextField::new('title', 'Titre'),
             ImageField::new('illustration')
                 ->setBasePath('uploads/')
                 ->setUploadDir('public/uploads')
                 ->setUploadedFileNamePattern('[randomhash].[extension]')
                 ->setRequired(false),
             SlugField::new('slug')->setTargetFieldName('title'),
-            TextareaField::new('content'),
-            DateField::new('createdAt')->hideOnForm(),
+            TextareaField::new('content', 'Article'),
+            DateField::new('createdAt', 'Date')->hideOnForm(),
         ];
     }
 

@@ -6,6 +6,7 @@ use App\Entity\Blogpost;
 use App\Entity\Carrier;
 use App\Entity\Category;
 use App\Entity\Commentary;
+use App\Entity\Contact;
 use App\Entity\Order;
 use App\Entity\Product;
 use App\Entity\User;
@@ -41,5 +42,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Produits', 'fa fa-tags', Product::class);
         yield MenuItem::linkToCrud('Blog', 'far fa-newspaper', Blogpost::class);
         yield MenuItem::linkToCrud('Commentaires', 'fas fa-comments', Commentary::class);
+        yield MenuItem::linkToCrud('Contact', 'fas fa-envelope-open-text', Contact::class);
     }
 }

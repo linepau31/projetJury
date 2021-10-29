@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Classe\MyBar;
-
 use App\Entity\Product;
 use App\Repository\MyBarRepository;
 use Doctrine\ORM\EntityManagerInterface;
