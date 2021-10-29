@@ -42,16 +42,17 @@ class ResetPasswordController extends AbstractController
                 $this->entityManager->flush();
 
                 // 2 : Envoyer un email à l'utilisateur avec le lien pour mettre à jour sont mdp
-                $url = $this->generateUrl('update_password', [
+                $url = $this->generateUrl('new_password', [
                     'token' => $reset_password->getToken()
                 ]);
 
-                // $content = "Bonjour ".$user->getFirstname()."<br/>Vous avez demandé à réinitialiser votre mot de passe sur le site H2o Fabrik Cocktail.<br/><br/>";
-                // $content .= "Merci de bien vouloir cliquer sur le lien suivant pour <a href='".$url."'> mettre à jour votre mot de passe</a>.";
 
-                // $mail = new Mail();
-                // $mail->send($user->getEmail(), $user->getFirstname().' '.$user->getLastname(), 'Réinitialiser Votre mot de passe d'H2o Fabrik Cocktail ', $content);
-                //  $this->addFlash('notice', 'Vous allez recevoir dans quelques secondes un email avec la procédure pour réinitialiser votre mot de passe.');
+                $content = "Bonjour " . $user->getFirstname() . "<br/>Vous avez demandé à réinitialiser votre mot de passe sur le site de H2o Fabrik Cocktail.<br/><br/>";
+                $content .= "Merci de bien vouloir cliquer sur le lien suivant pour <a href='" . $url . "'> mettre à jour votre mot de passe</a>.";
+
+                $mail = new Mail();
+                $mail->send($user->getEmail(), $user->getFirstname() . ' ' . $user->getLastname(), 'Réinitialiser Votre mot de passe de H2o Fabrik Cocktail', $content);
+                $this->addFlash('notice', 'Vous allez recevoir dans quelques secondes un email avec la procédure pour réinitialiser votre mot de passe.');
             }
             else {
                 $this->addFlash('notice', 'Cette adresse email est inconnue.');
@@ -61,7 +62,7 @@ class ResetPasswordController extends AbstractController
         return $this->render('reset_password/index.html.twig');
     }
 
-    #[Route('/modifier-mon-mot-de-passe/{token}', name: 'update_password')]
+    #[Route('/modifier-mon-mot-de-passe/{token}', name: 'new_password')]
     public function update(Request $request, $token, UserPasswordHasherInterface $encoder): Response
     {
         $reset_password = $this->entityManager->getRepository(ResetPassword::class)->findOneByToken($token);
