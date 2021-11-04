@@ -3,13 +3,18 @@
 {% block title %}Nous contacter - H2o Fabrik Cocktail{% endblock %}
 
 {% block content %}
-    <h2 class="pt-5">Nous contacter</h2>
-    <p>N'hésitez pas à prendre contact avec notre équipe, nous vous répondrons dans les meilleurs délais.</p>
+    <body style="background-color: black">
+<div class="img-fluid " style="background-image: url('{{ asset('assets/img/lexique-mixologie-cocktails_edited.jpg') }}');">
+    <div class="container-fluid text-white mt-5">
+    <h2 class="pt-5 text-center">Nous contacter</h2>
+    <p class="text-center">N'hésitez pas à prendre contact avec notre équipe, nous vous répondrons dans les meilleurs délais.</p>
     {% for message in app.flashes('notice') %}
         <div class="alert alert-info">{{ message }}</div>
     {% endfor %}
     <div class="row">
-        <div class="col-md-8 pt-2">{{ form(form) }}</div>
+        <div class="col-md-6 pt-2 mx-auto">{{ form(form) }}</div>
     </div>
-
+    </div>
+</div>
+    </body>
 {% endblock %}

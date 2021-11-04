@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="La Boutique qui vend des articles pour fabriquer des cocktails">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.1.1">
     <title>{% block title %} H2o Fabrik Cocktail{% endblock %}</title>
 
@@ -32,62 +31,61 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand pr-5" href="{{  path('home') }}">H2o Fabrik Cocktail</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="{{ asset('assets/img/bouteilles-de-vin.png') }} " alt="icons 3 bouteilles" class="cart-icon">
-                        Produits
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{{ path('products') }}">Nos Produits</a></li>
-                        <li><a class="dropdown-item" href="{{ path('my_bar') }}">Mon Bar</a></li>
-                        <li><a class="dropdown-item" href="{{ path('shopping_list') }}">Liste de courses</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{  path('blogposts') }}">Blog</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ path('contact') }}">Contact</a>
-                </li>
-
-            </ul>
-            <div class="navbar-item-custom">
-                {% if app.user %}
-                    <a href="{{ path('account') }}">Mon compte <small>*{{ app.user.firstname }}*</small></a> | <a href="{{ path('app_logout') }}">Déconnexion</a>
-                {% else %}
-                    <a href="{{ path('app_login')  }}">Connexion</a> | <a href="{{ path('register') }}">Inscription</a>
-                {% endif %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Fifth navbar example">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{  path('home') }}">H2o Fabrik Cocktail</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarsExample05">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="{{ asset('assets/img/bouteilles-de-vin.png') }} " alt="icons 3 bouteilles" class="cart-icon">
+                            Produits
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown05">
+                            <li><a class="dropdown-item" href="{{ path('products') }}">Nos Produits</a></li>
+                            <li><a class="dropdown-item" href="{{ path('my_bar') }}">Mon Bar</a></li>
+                            <li><a class="dropdown-item" href="{{ path('shopping_list') }}">Liste de courses</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{  path('blogposts') }}">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('contact') }}">Contact</a>
+                    </li>
+                </ul>
+                <div class="navbar-item-custom">
+                    {% if app.user %}
+                        <a href="{{ path('account') }}">Mon compte <small>*{{ app.user.firstname }}*</small></a> | <a href="{{ path('app_logout') }}">Déconnexion</a>
+                    {% else %}
+                        <a href="{{ path('app_login')  }}">Connexion</a> | <a href="{{ path('register') }}">Inscription</a>
+                    {% endif %}
+                </div>
+                <a href="{{ path('cart') }}">
+                    <img src="{{ asset('assets/img/panier.png') }}" alt="Mon panier" class="cart-icon">
+                </a>
             </div>
-            <a href="{{ path('cart') }}">
-                <img src="{{ asset('assets/img/panier.png') }}" alt="Mon panier" class="cart-icon">
-            </a>
+            </div>
         </div>
     </nav>
+
 </header>
 
-<main class="main">
+<main role="main">
 
-    {% if block('img') is defined %}
-        <img src="{{ asset('assets/img/martini-1117932_1920.jpg') }}" class="img-fluid position-relative" alt="3 verres de cocktails différents">
 
-    {% endif %}
-
-    <div class="container marketing {% if block('img') is not defined %} mt-5 {% endif %}">
 
 
         {% block content %}
         {% endblock %}
 
-    </div>
+    </div><!-- /.container -->
 
-<!-- FOOTER -->
+
+    <!-- FOOTER -->
 <footer class="footer-custom bg-dark">
     <p class="text-white">
         &copy; 2021-2022 H2o Fabrik Cocktail <br>
