@@ -32,6 +32,7 @@
                     <small>{{ product.product.subtitle }}</small>
                 </td>
                 <td>{{ (product.product.price / 100)|number_format(2, ',', '.') }} €</td>
+
                 <td>
                     <a href="{{ path('delete_shopping_list', { 'id' : product.product.id}) }}">
                         <img src="{{ asset('assets/img/poubelle-de-recyclage.png') }}" alt="Supprimer mon produit" height="22px"> <br>

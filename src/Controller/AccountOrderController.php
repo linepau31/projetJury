@@ -35,10 +35,10 @@ class AccountOrderController extends AbstractController
         $order = $this->entityManager->getRepository(Order::class)->findOneByReference($reference);
 
         if (!$order || $order->getUser() != $this->getUser()) {
-            return $this->redirectToRoute('account_order');
+            return $this->redirectToRoute('account_order_show');
         }
 
-        return $this->render('account/order_show.html.twig', [
+        return $this->render('account/order.html.twig', [
             'order' => $order
         ]);
     }

@@ -4,10 +4,18 @@
 
 {% block content %}
 
-    {% block img %} {% endblock %}
 
+
+        <div class="tm-hero d-flex justify-content-center align-items-center">
+            <video autoplay muted loop style="width: 100vw">
+                <source src="https://storage.coverr.co/videos/l2WwnIrEa1E7gpqaAymAt02AdHUWK2Mjo?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6Ijg3NjdFMzIzRjlGQzEzN0E4QTAyIiwiaWF0IjoxNjM2MDI2Mjg4fQ.VUDMHh4gEjBOlIv0Z9pqLrPzG1sgpmKEb4YJiDvEYSY" type="video/mp4">
+            </video>
+            <form class="d-flex position-absolute">
     <!--*******ALPHABET PALETTE*******-->
     <div class="container-fluid m-5">
+        <h1 class="text-center ">H2o Fabrik Cocktail</h1>
+        </br>
+        <h5 class="text-center text-secondary">Pour des idées de cocktail aller sur la lettre de votre choix</h5>
         <div class="row mt-1">
             <div class="col text-center">
                 <div class="btn-group flex-wrap" id="alphabetGroup" role="group">
@@ -93,7 +101,8 @@
             </div>
         </div>
     </div>
-
+            </form>
+        </div>
     <!--*******RESULTS*******-->
     <section id="results">
         <div class="container-fluid">
@@ -118,5 +127,6 @@
 
 
 <script src="{{ asset('assets/API/cocktail.js') }}"></script>
+
 
 {% endblock %}

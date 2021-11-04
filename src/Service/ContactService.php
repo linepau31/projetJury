@@ -20,7 +20,7 @@ class ContactService
 
     public function persistContact(Contact $contact): void
     {
-        $contact->setIsSend(false)
+        $contact->setIsRead(false)
                 ->setCreatedAt(new \DateTimeImmutable('now'));
 
         $this->entityManager->persist($contact);
@@ -28,9 +28,9 @@ class ContactService
         $this->flash->add('notice', 'Merci de nous avoir contacté. Notre équipe va vous répondre dans les meilleurs délais.');
     }
 
-    public function isSend(Contact $contact): void
+    public function isRead(Contact $contact): void
     {
-        $contact->setIsSend(true);
+        $contact->setIsRead(true);
 
         $this->entityManager->persist($contact);
         $this->entityManager->flush();

@@ -45,7 +45,7 @@ class Contact
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isSend;
+    private $isRead;
 
     public function getId(): ?int
     {
@@ -112,14 +112,14 @@ class Contact
         return $this;
     }
 
-    public function getIsSend(): ?bool
+    public function getIsRead(): ?bool
     {
-        return $this->isSend;
+        return $this->isRead;
     }
 
-    public function setIsSend(bool $isSend): self
+    public function setIsRead(bool $isRead): self
     {
-        $this->isSend = $isSend;
+        $this->isRead = $isRead;
 
         return $this;
     }
