@@ -49,7 +49,7 @@ class StripeController extends AbstractController
                 'unit_amount' => $order->getCarrierPrice(),
                 'product_data' => [
                     'name' => $order->getCarrierName(),
-                    'images' => [$YOUR_DOMAIN],
+                    'images' => [$YOUR_DOMAIN], // image du transporteur
                 ],
             ],
             'quantity' => 1,

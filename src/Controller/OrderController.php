@@ -67,9 +67,9 @@ class OrderController extends AbstractController
             $delivery_content .= '<br/>'.$delivery->getPostal().' '.$delivery->getCity();
             $delivery_content .= '<br/>'.$delivery->getCountry();
 
-            /* enregistrer ma commande order */
+            // enregistrer ma commande Order()
             $order = new Order();
-            $reference = $date->format('dmy').'-'.uniqid();
+            $reference = $date->format('dmY').'-'.uniqid();
             $order->setReference($reference);
             $order->setUser($this->getUser());
             $order->setCreatedAt($date);
@@ -77,6 +77,7 @@ class OrderController extends AbstractController
             $order->setCarrierPrice($carriers->getPrice());
             $order->setDelivery($delivery_content);
             $order->setState(0);
+
             // statue de la commande
             // 0 non validée
             // 1 payée
@@ -85,7 +86,7 @@ class OrderController extends AbstractController
 
             $this->entityManager->persist($order);
 
-            /*enregistrer mes produits orderDetails*/
+            // enregistrer mes produits OrderDetails ()
             foreach ($cart->getFull() as $product) {
                 $orderDetails = new OrderDetails();
                 $orderDetails->setMyOrder($order);

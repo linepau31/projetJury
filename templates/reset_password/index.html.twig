@@ -3,21 +3,27 @@
 {% block title %}Mot de passe oublié - H2o Fabrik Cocktail {% endblock %}
 
 {% block content %}
-    <div class="block-small">
-        {% for message in app.flashes('notice') %}
-            <div class="alert alert-info">{{ message }}</div>
-        {% endfor %}
+
+<div class="img-fluid " style="background-image: url('{{ asset('assets/img/mdp_bouteilles.jpg') }}');">
+    <div class="container-fluid text-white mt-5">
+        <h2 class="pt-5 text-center">Réinitialiser mon mot de passe</h2>
+        <div class="block-small">
         <form method="post">
-            <h1 class="h3 mb-3 font-weight-normal">Réinitialiser mon mot de passe</h1>
+
+            {% for message in app.flashes('notice') %}
+                <div class="alert alert-info">{{ message }}</div>
+            {% endfor %}
+
             <label for="inputEmail">Email</label>
             <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Merci de renseigner votre email" autocomplete="email" required autofocus>
-
-            <button class="btn btn-lg btn-dark btn-block mt-3" type="submit">
+            <button class="btn btn-dark mt-3 mb-3" type="submit">
                 Valider
             </button>
             <hr>
-            <p class="text-center">Ou souhaitez vous<a href="{{ path('app_login') }}"> vous connecter</a>?</p>
+            <p class="fw-bold">Ou souhaitez vous<a href="{{ path('app_login') }}"> vous connecter</a>?</p>
         </form>
     </div>
+    </div>
+</div>
 {% endblock %}
 

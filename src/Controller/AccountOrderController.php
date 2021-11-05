@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AccountOrderController extends AbstractController
 {
-    private EntityManagerInterface $entityManager;
+    private $entityManager;
 
     public function __construct(EntityManagerInterface $entityManager)
     {
@@ -21,8 +21,6 @@ class AccountOrderController extends AbstractController
     public function index(): Response
     {
         $orders = $this->entityManager->getRepository(Order::class)->findSuccessOrders($this->getUser());
-
-
 
         return $this->render('account/order.html.twig', [
             'orders' => $orders

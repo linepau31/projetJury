@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Product;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
@@ -33,5 +34,12 @@ class ProductCrudController extends AbstractCrudController
             MoneyField::new('price', 'Prix')->setCurrency('EUR'),
             AssociationField::new('category', 'Catégories')
         ];
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setDefaultSort(['id' => 'DESC']);
+        // article le plus ressent DESC
     }
 }
