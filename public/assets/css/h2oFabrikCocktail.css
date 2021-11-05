@@ -1,16 +1,12 @@
 body {
     position: relative;
-    height: auto;
     width: 100vw;
-    margin: 0;
-    padding: 0;
-
+    height: auto;
 }
 
 .navbar-item-custom, .navbar-item-custom a{
     color: white;
 }
-
 
 .footer-custom{
     text-align: center;
@@ -58,10 +54,17 @@ body {
     margin: 0 auto;
 }
 
+.block-lg {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+
+
 .form-check {
     background-color: lightgray;
-    padding: 20px 65px;
-    margin-top: 10px ;
+    padding: 20px 40px;
+    margin-top: 15px ;
 }
 
 .col-form-label {

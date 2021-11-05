@@ -4,41 +4,47 @@
 
 {% block content %}
 
-    <div class="block-small">
-        <form method="post">
-            {% if error %}
-                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-            {% endif %}
-
-            {% for message in app.flashes('notice') %}
-                <div class="alert alert-info">{{ message }}</div>
-            {% endfor %}
-
-            {% if app.user %}
-                <div class="mb-3">
-                    You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-                </div>
-            {% endif %}
 
 
-            <h1 class="h3 mb-3 font-weight-normal pt-4">Merci de vous connecter</h1>
-            <label for="inputEmail">Email</label>
-            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Merci de renseigner votre email" autocomplete="email" required autofocus>
-            <label for="inputPassword">Mot De Passe</label>
-            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Merci de renseigner votre Mot de passe" autocomplete="current-password" required>
+<div class="img-fluid col-md-7 mx-auto" style="background-image: url('{{ asset('assets/img/pexels-pixabay-301692.jpg') }}');">
+    <div class="container-fluid text-white mt-5">
+        <h2 class="pt-5">Connexion</h2>
+        <div class="row">
+            <div class="cols-md-5 pt-2">
+                <form method="post">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
 
-            <input type="hidden" name="_csrf_token"
-                   value="{{ csrf_token('authenticate') }}"
-            >
-            <button class="btn btn-lg btn btn-outline-dark btn-block mt-3" type="submit">
-                Se connecter
-            </button>
-            <hr>
-            <p class="text-center">Ou souhaitez vous<a href="{{ path('register') }}"> créer un compte</a>?</p>
-            <p class="text-center">Ou j'ai oublié mon<a href="{{ path('reset_password') }}"> Mot de passe</a></p>
-        </form>
+                    {% for message in app.flashes('notice') %}
+                        <div class="alert alert-info">{{ message }}</div>
+                    {% endfor %}
+
+                    {% if app.user %}
+                        <div class="mb-3">
+                            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                        </div>
+                    {% endif %}
+
+                    <label for="inputEmail">Email</label>
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Merci de renseigner votre email" autocomplete="email" required autofocus>
+                    <label for="inputPassword">Mot De Passe</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Merci de renseigner votre Mot de passe" autocomplete="current-password" required>
+
+                    <input type="hidden" name="_csrf_token"
+                           value="{{ csrf_token('authenticate') }}"
+                    >
+                    <button class="btn btn-outline-light mt-3" type="submit">
+                        Se connecter
+                    </button>
+                    <hr>
+                    <p class="text-center">Ou souhaitez vous<a href="{{ path('register') }}"> créer un compte</a>?</p>
+                    <p class="text-center">Ou j'ai oublié mon<a href="{{ path('reset_password') }}"> Mot de passe</a></p>
+                </form>
+            </div>
+        </div>
     </div>
-
+</div>
 
 
 

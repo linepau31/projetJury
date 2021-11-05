@@ -4,26 +4,92 @@
 
 {% block content %}
 
+    <!--Article-->
     <article class="blog-post px-3 py-5 p-md-5">
         <div class="container single-col-max-width">
-            <header class="blog-post-header">
+            <div class="blog-post-header">
                 <h2 class="title mb-2">{{ blogpost.title }}</h2>
                 <div class="meta mb-3">
                     <time class="fa-sm text-muted" datetime="2021-10-22">
                         Publié le {{ blogpost.createdAt|date('d/m/Y') }}
                     </time>
                 </div>
-            </header>
+            </div>
 
             <div class="blog-post-body">
                    <img class="img-fluid" src="/uploads/{{ blogpost.illustration }}" alt="image">
-                <p>{{ blogpost.content}} </p>
+                <p class="mt-3">{{ blogpost.content}} </p>
             </div>
         </div>
     </article>
 
-    {% include "commentary/index.html.twig" %}
-    {% include "commentary/Commentaires.html.twig" %}
+    <section class="pt-6 pt-md-8">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 d-flex justify-content-center">
+                    {% for message in app.flashes('success') %}
+                        <div class="alert alert-success">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Container Modal-->
+    <section class="pt-6 pt-md-8">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 d-flex justify-content-center">
+                    <!--Btn Modal-->
+                    <button type="button" class="btn btn-dark mb-5" data-bs-toggle="modal" data-bs-target="#commentary" >
+                        Laisser un commentaire
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Modal-->
+    <div class="modal fade" id="commentary" tabindex="-1" aria-labelledby="commentary" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Laisser un commentaire</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                </div>
+                <div class="modal-body">
+                    {{ form(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Container des commentaires publiés-->
+    {% for commentary in commentaires %}
+
+        <div class="container mb-2">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-9 col-xl-8">
+                    <div class="card card-row shadow-light-lg">
+                        <div class="card-body">
+                            <blockquote class="mb-0 text-center">
+                                <p>{{ commentary.content }}</p>
+                                <div class="blockquote-footer">
+                                    <span class="h6 text-uppercase">Par {{ commentary.author }} le {{ commentary.createdAt|date('d/m/Y') }}</span>
+                                </div>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    {% endfor%}
+
 
 
 {% endblock %}
