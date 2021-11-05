@@ -6,14 +6,14 @@
 
 <div class="img-fluid " style="background-image: url('{{ asset('assets/img/inscription_cocktail.jpg') }}');">
     <div class="container-fluid text-white mt-5">
-        <h2 class="pt-5 text-center">Inscription</h2>
+        <h2 class="pt-5">Inscription</h2>
     {% if notification %}
         <div class="alert alert-info">{{ notification }}</div>
         <hr>
     {% endif %}
 
         <div class="row">
-            <div class="col-md-6 pt-2 mx-auto">
+            <div class="col-md-6 pt-2 ">
     {{ form(form) }}
             </div>
             </div>
