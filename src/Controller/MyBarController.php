@@ -34,9 +34,6 @@ class MyBarController extends AbstractController
     public function add(MyBar $myBar, $id): Response
     {
         $myBar->add($id);
-        $em = $this->getDoctrine()->getManager();
-        $em->flush();
-
         return $this->redirectToRoute('my_bar');
     }
 
