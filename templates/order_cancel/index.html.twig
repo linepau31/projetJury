@@ -7,8 +7,9 @@
     <p>
         Bonjour <strong>{{ order.user.firstname }} {{ order.user.lastname }}</strong>,<br><br>
         Il semblerait que votre paiement est échoué pour votre commande n°<strong>{{ order.reference }}</strong>.
+        Une confirmation d'erreur vient de vous être envoyée par email à l'adresse <strong>{{ order.user.email }}</strong>.
 
     <hr>
-    <a href="{{ path('order') }}" class="btn btn-info">Réessayer le paiement</a>
+    <a href="{{ path('order') }}" class="btn btn-dark">Réessayer le paiement</a>
     </p>
 {% endblock %}

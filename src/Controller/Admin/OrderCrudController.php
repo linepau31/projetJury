@@ -44,9 +44,10 @@ class OrderCrudController extends AbstractCrudController
             ->add('detail', $updatePreparation)
             ->add('detail', $updateDelivery)
             ->add('index', 'detail');
+
     }
 
-    public function updatePreparation(AdminContext $context): \Symfony\Component\HttpFoundation\RedirectResponse
+    public function updatePreparation(AdminContext $context)
     {
         $order = $context->getEntity()->getInstance();
         $order->setState(2); // Préparation en cours
@@ -66,7 +67,7 @@ class OrderCrudController extends AbstractCrudController
         return $this->redirect($url);
     }
 
-    public function updateDelivery(AdminContext $context): \Symfony\Component\HttpFoundation\RedirectResponse
+    public function updateDelivery(AdminContext $context)
     {
         $order = $context->getEntity()->getInstance();
         $order->setState(3); // en cours de livraison
@@ -91,7 +92,6 @@ class OrderCrudController extends AbstractCrudController
         return $crud->setDefaultSort(['id' => 'DESC']);
     }
 
-
     public function configureFields(string $pageName): iterable
     {
         return [
@@ -110,7 +110,5 @@ class OrderCrudController extends AbstractCrudController
             ]),
             ArrayField::new('orderDetails', 'Produits achetés')->hideOnIndex()
         ];
-
     }
-
 }

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Classe\ShoppingList;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -18,8 +19,9 @@ class ShoppingListController extends AbstractController
     }
 
     #[Route('/shopping_list', name: 'shopping_list')]
-    public function index(ShoppingList $shopList): Response
+    public function index(ShoppingList $shopList, Request $request): Response
     {
+
         return $this->render('shopping_list/index.html.twig', [
             'shopping_list' => $shopList->getFull()
             ]);
@@ -29,6 +31,8 @@ class ShoppingListController extends AbstractController
     public function add(ShoppingList $shoppingList, $id): Response
     {
         $shoppingList->add($id);
+
+
 
         return $this->redirectToRoute('shopping_list');
     }
@@ -41,4 +45,5 @@ class ShoppingListController extends AbstractController
 
         return $this->redirectToRoute('shopping_list');
     }
+
 }

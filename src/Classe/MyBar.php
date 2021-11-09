@@ -8,8 +8,8 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class MyBar
 {
-    private SessionInterface $session;
-    private EntityManagerInterface $entityManager;
+    private $session;
+    private $entityManager;
 
     public function __construct(EntityManagerInterface $entityManager, SessionInterface $session)
     {

@@ -49,8 +49,8 @@ class OrderController extends AbstractController
             'user' => $this->getUser()
         ]);
 
-        $form->handleRequest($request);
 
+        $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $date = new \DateTimeImmutable();
             $carriers = $form->get('carriers')->getData();

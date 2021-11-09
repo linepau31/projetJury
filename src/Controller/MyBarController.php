@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Classe\MyBar;
-use App\Entity\Product;
+use App\Form\MyBarType;
 use App\Repository\MyBarRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,28 +15,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class MyBarController extends AbstractController
 {
     private $entityManager;
-    private $flashBag;
 
-    public function __construct(EntityManagerInterface $entityManager,FlashBagInterface $flashBag)
+    public function __construct(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
-        $this->flashBag = $flashBag;
-    }
-
-    public function persistMyBar(
-        MyBar $myBar,
-        Product $product = null): void
-    {
-        $myBar->setProduct($product);
-
-
-        $this->entityManager->persist($myBar);
-        $this->entityManager->flush();
     }
 
     #[Route('/my_bar', name: 'my_bar')]
     public function index(MyBar $myBar): Response
     {
+
         return $this->render('my_bar/index.html.twig', [
             'my_bar' => $myBar->getFull()
         ]);
@@ -46,6 +34,8 @@ class MyBarController extends AbstractController
     public function add(MyBar $myBar, $id): Response
     {
         $myBar->add($id);
+        $em = $this->getDoctrine()->getManager();
+        $em->flush();
 
         return $this->redirectToRoute('my_bar');
     }

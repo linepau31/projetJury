@@ -15,6 +15,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class StripeController extends AbstractController
 {
+    /**
+     * @throws \Stripe\Exception\ApiErrorException
+     */
     #[Route('/commande/create-session/{reference}', name: 'stripe_create_session')]
     public function index(EntityManagerInterface $entityManager,Cart $cart, $reference): Response
     {
