@@ -1,5 +1,5 @@
 H2o Fabrik Cokctail </br>
-Un site e-commerce/blog/liste de course pour présenter à mon examen </br>
+Un site e-commerce/blog/liste de course pour présenter à mon examen avec Synfony 5 </br>
 API Cocktail https://www.thecocktaildb.com/ </br>
 API Stripe https://stripe.com/fr </br>
 API Mailjet https://fr.mailjet.com/ </br>
