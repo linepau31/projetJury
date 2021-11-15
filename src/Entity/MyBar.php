@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MyBarRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -26,6 +28,7 @@ class MyBar
      * @ORM\Column(type="string", length=255)
      */
     private $name;
+
 
     public function getId(): ?int
     {
@@ -55,4 +58,6 @@ class MyBar
 
         return $this;
     }
+
+
 }

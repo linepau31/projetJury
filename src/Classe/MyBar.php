@@ -27,6 +27,7 @@ class MyBar
         else{
             $myBar[$id] = 1;
         }
+
         $this->session->set('my_bar', $myBar);
     }
 
@@ -34,7 +35,6 @@ class MyBar
     {
         return $this->session->get('my_bar');
     }
-
 
     public function delete($id)
     {

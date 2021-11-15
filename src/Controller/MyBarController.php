@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Classe\MyBar;
+use App\Entity\Product;
 use App\Form\MyBarType;
 use App\Repository\MyBarRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -34,6 +35,7 @@ class MyBarController extends AbstractController
     public function add(MyBar $myBar, $id): Response
     {
         $myBar->add($id);
+
         return $this->redirectToRoute('my_bar');
     }
 
@@ -41,6 +43,7 @@ class MyBarController extends AbstractController
 
     public function delete(MyBar $myBar, $id): Response
     {
+        //$myBar = $this->getDoctrine()->getRepository()
         $myBar->delete($id);
 
         return $this->redirectToRoute('my_bar');

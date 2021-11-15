@@ -7,7 +7,7 @@
     <h1>Mes adresses</h1>
     <a href="{{ path('account_address_add') }}" class="btn btn-dark btn-sm float-right">Ajouter une adresse</a>
     C'est dans cette espace que vous allez gérer toutes vos adresses <br>
-    <a href="{{ path('account/index.html.twig') }}">Retour</a>
+    <a href="{{ path('account') }}">Retour</a>
     <hr>
     {% if app.user.addresses|length == 0 %}
         <p class="text-left">

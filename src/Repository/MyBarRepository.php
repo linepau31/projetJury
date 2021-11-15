@@ -22,8 +22,8 @@ class MyBarRepository extends ServiceEntityRepository
     // /**
     //  * @return MyBar[] Returns an array of MyBar objects
     //  */
-    /*
-    public function findByExampleField($value)
+
+   /* public function findByExampleField($value)
     {
         return $this->createQueryBuilder('m')
             ->andWhere('m.exampleField = :val')
@@ -33,8 +33,8 @@ class MyBarRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
-    }
-    */
+    } */
+
 
     /*
     public function findOneBySomeField($value): ?MyBar
