@@ -28,12 +28,4 @@ class ContactService
         $this->flash->add('notice', 'Merci de nous avoir contacté. Notre équipe va vous répondre dans les meilleurs délais.');
     }
 
-    public function isRead(Contact $contact): void
-    {
-        $contact->setIsRead(true);
-
-        $this->entityManager->persist($contact);
-        $this->entityManager->flush();
-    }
-
 }

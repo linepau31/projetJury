@@ -14,7 +14,7 @@
             <span class="product-page-price">{{ (product.price / 100)|number_format(2, ',', '.') }} €</span>
             <hr>
             <p>
-                {{ product.description }}
+                {{ product.description|raw }}
 
             </p>
             <div class="btn-group" role="group">

@@ -17,7 +17,7 @@ class Cart
         $this->entityManager = $entityManager;
     }
 
-    public function add($id)
+    public function add($id) /* Ajoute un produit*/
     {
         $cart = $this->session->get('cart', []);
 
@@ -25,7 +25,7 @@ class Cart
             $cart[$id]++;  /* ajoute 1 produit */
         }
         else{
-            $cart[$id] = 1;  /* enlève */
+            $cart[$id] = 1;
         }
         $this->session->set('cart', $cart);
     }
@@ -49,7 +49,7 @@ class Cart
         return $this->session->set('cart', $cart);
     }
 
-    public function decrease($id)
+    public function decrease($id) /* Enleve un produit*/
     {
         $cart = $this->session->get('cart', []);
 

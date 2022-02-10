@@ -30,8 +30,7 @@ class UserCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setPageTitle('edit', 'Utilisateurs')
-            ;
+            ->setPageTitle(Crud::PAGE_INDEX, 'Utilisateurs');
     }
 
 }

@@ -4,10 +4,11 @@
 
 {% block content %}
 
-    <a href="{{ path('blogposts') }}">Retour au Blog</a>
-
     <!--Article-->
     <article class="blog-post px-3 py-5 p-md-5">
+        <div class="mb-4">
+            <a href="{{ path('blogposts') }}">Retour au Blog</a>
+        </div>
         <div class="container single-col-max-width">
             <div class="blog-post-header">
                 <h2 class="title mb-2">{{ blogpost.title }}</h2>

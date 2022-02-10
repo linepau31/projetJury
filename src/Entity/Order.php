@@ -57,9 +57,9 @@ class Order
     private $stripeSessionId;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="boolean")
      */
-    private $state;
+    private $isPaid;
 
 
     public function getTotal()
@@ -200,14 +200,14 @@ class Order
         return $this;
     }
 
-    public function getState(): ?int
+    public function getIsPaid(): ?int
     {
-        return $this->state;
+        return $this->isPaid;
     }
 
-    public function setState(int $state): self
+    public function setIsPaid(int $isPaid): self
     {
-        $this->state = $state;
+        $this->isPaid = $isPaid;
 
         return $this;
     }

@@ -36,7 +36,7 @@ class AccountOrderController extends AbstractController
             return $this->redirectToRoute('account_order_show');
         }
 
-        return $this->render('account/order.html.twig', [
+        return $this->render('account/order_show.html.twig', [
             'order' => $order
         ]);
     }

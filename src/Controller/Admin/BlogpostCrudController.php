@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Blogpost;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
@@ -10,6 +12,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class BlogpostCrudController extends AbstractCrudController
@@ -23,7 +26,7 @@ class BlogpostCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id')->hideOnForm(),
+            IdField::new('id'),
             TextField::new('title', 'Titre'),
             ImageField::new('illustration')
                 ->setBasePath('uploads/')
@@ -31,7 +34,7 @@ class BlogpostCrudController extends AbstractCrudController
                 ->setUploadedFileNamePattern('[randomhash].[extension]')
                 ->setRequired(false),
             SlugField::new('slug')->setTargetFieldName('title'),
-            TextareaField::new('content', 'Article'),
+            TextEditorField::new('content', 'Article'),
             DateField::new('createdAt', 'Date')->hideOnForm(),
         ];
     }
@@ -39,7 +42,9 @@ class BlogpostCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
+            ->setPageTitle(Crud::PAGE_INDEX, 'Blog')
             ->setDefaultSort(['createdAt' => 'DESC']);
         // article le plus ressent DESC
     }
+
 }

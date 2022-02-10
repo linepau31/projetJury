@@ -26,7 +26,7 @@ class CommentaryRepository extends ServiceEntityRepository
         if ($value instanceof  Blogpost) {
             $object = 'blogpost';
         }
-        return $this->createQueryBuilder('c')
+        return $this->createQueryBuilder('c')  /* C: commentaire*/
             ->andWhere('c.' . $object . ' = :val')
             ->andWhere('c.isPublished = true')
             ->setParameter('val', $value->getId())

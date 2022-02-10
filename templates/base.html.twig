@@ -31,7 +31,7 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Fifth navbar example">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" aria-label="Fifth navbar example">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{  path('home') }}">H2o Fabrik Cocktail</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,94 +78,95 @@
     {% if block('video') is defined %}
 
         <div class="tm-hero d-flex justify-content-center align-items-center">
-            <video autoplay muted loop >
-                <source src="https://storage.coverr.co/videos/l2WwnIrEa1E7gpqaAymAt02AdHUWK2Mjo?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6Ijg3NjdFMzIzRjlGQzEzN0E4QTAyIiwiaWF0IjoxNjM2MDI2Mjg4fQ.VUDMHh4gEjBOlIv0Z9pqLrPzG1sgpmKEb4YJiDvEYSY" type="video/mp4">
+            <video autoplay muted>
+                <source src="https://storage.coverr.co/videos/l2WwnIrEa1E7gpqaAymAt02AdHUWK2Mjo?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6Ijg3NjdFMzIzRjlGQzEzN0E4QTAyIiwiaWF0IjoxNjM2MDI2Mjg4fQ.VUDMHh4gEjBOlIv0Z9pqLrPzG1sgpmKEb4YJiDvEYSY"></source>
             </video>
+
             <form class="d-flex position-absolute">
                 <!--*******ALPHABET PALETTE*******-->
                 <div class="container-fluid m-5">
-                    <h1 class="text-center ">H2o Fabrik Cocktail</h1>
+                    <h1 id="titleHome" class="text-center font-weight-bold text-secondary">H2o Fabrik Cocktail</h1>
                     </br>
-                    <h5 class="text-center text-secondary">Pour des idées de cocktail aller sur la lettre de votre choix</h5>
+                    <h5 id="instructions" class="text-center text-info font-weight-bold">Pour des idées de cocktail aller sur la lettre de votre choix</h5>
                     <div class="row mt-1">
-                        <div class="col text-center">
+                        <div id="letter" class="col text-wrap text-sm-center">
                             <div class="btn-group flex-wrap" id="alphabetGroup" role="group">
-                                <button class="btn btn-outline-secondary" onclick="letterPagination('a')"
+                                <button class="btn btn-info" onclick="letterPagination('a')"
                                         type="button" >A
                                 </button>
-                                <button class="btn btn-outline-secondary" id="btnB" onclick="letterPagination('b')"
+                                <button class="btn btn-info" id="btnB" onclick="letterPagination('b')"
                                         type="button">B
                                 </button>
-                                <button class="btn btn-outline-secondary" id="btnC" onclick="letterPagination('c')"
+                                <button class="btn btn-info" id="btnC" onclick="letterPagination('c')"
                                         type="button">C
                                 </button>
-                                <button class="btn btn-outline-secondary" id="btnD" onclick="letterPagination('d')"
+                                <button class="btn btn-info" id="btnD" onclick="letterPagination('d')"
                                         type="button">D
                                 </button>
-                                <button class="btn btn-outline-secondary" id="btnE" onclick="letterPagination('e')"
+                                <button class="btn btn-info" id="btnE" onclick="letterPagination('e')"
                                         type="button">E
                                 </button>
-                                <button class="btn btn-outline-secondary" id="btnF" onclick="letterPagination('f')"
+                                <button class="btn btn-info" id="btnF" onclick="letterPagination('f')"
                                         type="button">F
                                 </button>
-                                <button class="btn btn-outline-secondary" id="btnG" onclick="letterPagination('g')"
+                                <button class="btn btn-info" id="btnG" onclick="letterPagination('g')"
                                         type="button">G
                                 </button>
-                                <button class="btn btn-outline-secondary" id="btnH" onclick="letterPagination('h')"
+                                <button class="btn btn-info" id="btnH" onclick="letterPagination('h')"
                                         type="button">H
                                 </button>
-                                <button class="btn btn-outline-secondary" id="btnI" onclick="letterPagination('i')"
+                                <button class="btn btn-info" id="btnI" onclick="letterPagination('i')"
                                         type="button">I
                                 </button>
-                                <button class="btn btn-outline-secondary" id="btnJ" onclick="letterPagination('j')"
+                                <button class="btn btn-info" id="btnJ" onclick="letterPagination('j')"
                                         type="button">J
                                 </button>
-                                <button class="btn btn-outline-secondary" id="btnK" onclick="letterPagination('k')"
+                                <button class="btn btn-info" id="btnK" onclick="letterPagination('k')"
                                         type="button">K
                                 </button>
-                                <button class="btn btn-outline-secondary" id="btnL" onclick="letterPagination('l')"
+                                <button class="btn btn-info" id="btnL" onclick="letterPagination('l')"
                                         type="button">L
                                 </button>
-                                <button class="btn btn-outline-secondary" id="btnM" onclick="letterPagination('m')"
+                                <button class="btn btn-info" id="btnM" onclick="letterPagination('m')"
                                         type="button">M
                                 </button>
-                                <button class="btn btn-outline-secondary" id="btnN" onclick="letterPagination('n')"
+                                <button class="btn btn-info" id="btnN" onclick="letterPagination('n')"
                                         type="button">N
                                 </button>
-                                <button class="btn btn-outline-secondary" id="btnO" onclick="letterPagination('o')"
+                                <button class="btn btn-info" id="btnO" onclick="letterPagination('o')"
                                         type="button">O
                                 </button>
-                                <button class="btn btn-outline-secondary" id="btnP" onclick="letterPagination('p')"
+                                <button class="btn btn-info" id="btnP" onclick="letterPagination('p')"
                                         type="button">P
                                 </button>
-                                <button class="btn btn-outline-secondary" id="btnQ" onclick="letterPagination('q')"
+                                <button class="btn btn-info" id="btnQ" onclick="letterPagination('q')"
                                         type="button">Q
                                 </button>
-                                <button class="btn btn-outline-secondary" id="btnR" onclick="letterPagination('r')"
+                                <button class="btn btn-info" id="btnR" onclick="letterPagination('r')"
                                         type="button">R
                                 </button>
-                                <button class="btn btn-outline-secondary" id="btnS" onclick="letterPagination('s')"
+                                <button class="btn btn-info" id="btnS" onclick="letterPagination('s')"
                                         type="button">S
                                 </button>
-                                <button class="btn btn-outline-secondary" id="btnT" onclick="letterPagination('t')"
+                                <button class="btn btn-info" id="btnT" onclick="letterPagination('t')"
                                         type="button">T
                                 </button>
-                                <button class="btn btn-outline-secondary" id="btnU" onclick="letterPagination('u')"
+                                <button class="btn btn-info" id="btnU" onclick="letterPagination('u')"
                                         type="button">U
                                 </button>
-                                <button class="btn btn-outline-secondary" id="btnV" onclick="letterPagination('v')"
+                                <button class="btn btn-info" id="btnV" onclick="letterPagination('v')"
                                         type="button">V
                                 </button>
-                                <button class="btn btn-outline-secondary" id="btnW" onclick="letterPagination('w')"
+                                <button class="btn btn-info" id="btnW" onclick="letterPagination('w')"
                                         type="button">W
                                 </button>
-                                <button class="btn btn-outline-secondary" id="btnX" onclick="letterPagination('x')"
+                                <button class="btn btn-info" id="btnX" onclick="letterPagination('x')"
                                         type="button">X
                                 </button>
-                                <button class="btn btn-outline-secondary" id="btnY" onclick="letterPagination('y')"
+                                <button class="btn btn-info" id="btnY" onclick="letterPagination('y')"
                                         type="button">Y
                                 </button>
-                                <button class="btn btn-outline-secondary" id="btnZ" onclick="letterPagination('z')"
+                                <button class="btn btn-info" id="btnZ" onclick="letterPagination('z')"
                                         type="button">Z
                                 </button>
                             </div>

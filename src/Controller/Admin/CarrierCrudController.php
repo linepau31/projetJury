@@ -3,10 +3,12 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Carrier;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class CarrierCrudController extends AbstractCrudController
@@ -21,9 +23,15 @@ class CarrierCrudController extends AbstractCrudController
     {
         return [
             TextField::new('name', 'Nom du Transporteur'),
-            TextareaField::new('description'),
+            TextEditorField::new('description'),
             MoneyField::new('price', 'prix')->setCurrency('EUR'),
         ];
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setPageTitle(Crud::PAGE_INDEX, 'Transporteurs');
     }
 
 }

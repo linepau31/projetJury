@@ -43,14 +43,15 @@ class OrderCrudController extends AbstractCrudController
         return $actions
             ->add('detail', $updatePreparation)
             ->add('detail', $updateDelivery)
-            ->add('index', 'detail');
+            ->add('index', 'detail')
 
+            ->disable(Action::DELETE, Action::NEW);
     }
 
     public function updatePreparation(AdminContext $context)
     {
         $order = $context->getEntity()->getInstance();
-        $order->setState(2); // Préparation en cours
+        $order->setIsPaid(2); // Préparation en cours
         $this->entityManager->flush();
 
         $this->addFlash('notice', "<span style='color: green;'><strong>La commande ".$order->getReference()." est en <u>cours de préparation</u>.</strong></span>");
@@ -70,7 +71,7 @@ class OrderCrudController extends AbstractCrudController
     public function updateDelivery(AdminContext $context)
     {
         $order = $context->getEntity()->getInstance();
-        $order->setState(3); // en cours de livraison
+        $order->setIsPaid(3); // en cours de livraison
         $this->entityManager->flush();
 
         $this->addFlash('notice', "<span style='color: green;'><strong>La commande ".$order->getReference()." est en <u>cours de livraison</u>.</strong></span>");
@@ -89,7 +90,9 @@ class OrderCrudController extends AbstractCrudController
 
     public function configureCrud(Crud $crud): Crud
     {
-        return $crud->setDefaultSort(['id' => 'DESC']);
+        return $crud
+            ->setPageTitle(Crud::PAGE_INDEX, 'Commandes')
+            ->setDefaultSort(['id' => 'DESC']);
     }
 
     public function configureFields(string $pageName): iterable
@@ -102,7 +105,7 @@ class OrderCrudController extends AbstractCrudController
             MoneyField::new('total ','Total produit')->setCurrency('EUR'),
             TextField::new('carrierName', 'Transporteur'),
             MoneyField::new('carrierPrice', 'Frais de port')->setCurrency('EUR'),
-            ChoiceField::new('state','Payée')->setChoices([
+            ChoiceField::new('isPaid','Payée')->setChoices([
                 'Non payée' => 0,
                 'Payée' => 1,
                 'Préparation en cours' => 2,

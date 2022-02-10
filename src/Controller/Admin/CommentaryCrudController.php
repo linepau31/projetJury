@@ -26,10 +26,10 @@ class CommentaryCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id')->hideOnForm(),
+            IdField::new('id'),
             AssociationField::new('blogpost'),
-            TextField::new('Author', 'Auteur')->hideOnForm(),
-            EmailField::new('email')->onlyOnForms(),
+            TextField::new('Author', 'Auteur'),
+            EmailField::new('email'),
             TextareaField::new('content', 'Contenu'),
             DateField::new('createdAt', 'Date'),
             BooleanField::new('isPublished', 'Publié'),
@@ -46,6 +46,7 @@ class CommentaryCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
+            ->setPageTitle(Crud::PAGE_INDEX, 'Commentaires')
             ->setDefaultSort(['createdAt' => 'DESC']);
         // article le plus ressent DESC
     }

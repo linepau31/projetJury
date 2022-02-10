@@ -37,13 +37,13 @@ class ContactCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
+            ->setPageTitle(Crud::PAGE_INDEX, 'Contact')
             ->setDefaultSort(['createdAt' => 'DESC']);
     }
 
     public function configureActions(Actions $actions): Actions
     {
         return $actions
-            ->add(Crud::PAGE_INDEX, Action::DETAIL)
-            ->disable(Action::DELETE, Action::NEW);
+            ->add(Crud::PAGE_INDEX, Action::DETAIL);
     }
 }

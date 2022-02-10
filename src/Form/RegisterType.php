@@ -40,10 +40,6 @@ class RegisterType extends AbstractType
             ])
             ->add('email', EmailType::class, [
                 'label' => 'Email',
-                'constraints' => new Length([
-                    'min' => 2,
-                    'max'=> 60
-                ]),
                 'attr' => [
                     'placeholder' => 'Merci de renseigner votre adresse email'
                 ]
@@ -53,6 +49,10 @@ class RegisterType extends AbstractType
                 'invalid_message' => 'Le mot de passe est la confirmation doivent être identique!',
                 'label' => 'Mot De Passe',
                 'required' => true,
+                'constraints' => new Length([
+                    'min' => 4,
+                    'max'=> 20
+                ]),
                 'first_options' => [ 'label' => 'Mot De Passe',
                     'attr' => [
                         'placeholder' => 'Merci de renseigner votre Mot de passe'
