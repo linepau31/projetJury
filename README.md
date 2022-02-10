@@ -1,5 +1,5 @@
 H2o Fabrik Cokctail </br>
-La branche ou je développe mon projet avec les fonctionnalités abouties est la branche DEV.
+Je développe mon projet avec les fonctionnalités abouties est la branche DEV.
 Un site e-commerce/blog/liste de course pour présenter à mon examen avec Synfony 5 </br>
 API Cocktail https://www.thecocktaildb.com/ </br>
 API Stripe https://stripe.com/fr </br>
